@@ -35,3 +35,14 @@ for line in tweets_file:
 tweets= pd.DataFrame([tweets_text,tweets_sentiment]).T
 tweets.columns = ['tweet_text','tweet_sentiment']
 print (tweets)
+
+
+percent = [0,0,0]
+for indexs in tweets.index:
+    if tweets.loc[indexs]['tweet_sentiment'] == 'positive':
+        percent[0] +=1
+    elif tweets.loc[indexs]['tweet_sentiment'] == 'neutral':
+        percent[1] +=1
+    else:
+        percent[2] +=1
+print (percent)

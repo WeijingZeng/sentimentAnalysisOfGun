@@ -4,13 +4,15 @@ import matplotlib.pyplot as plt
 import re
 
 tweets_data_path = './test-gun.txt'
-tweets_data = []
+tweets_text = []
 tweets_file = open(tweets_data_path, "r")
 for line in tweets_file:
     try:
         tweet = json.loads(line)
-        tweets_data.append(tweet)
+        if tweet['text'] not in tweets_text:
+            tweets_text.append(tweet['text'])
     except:
         continue
 
-print (len(tweets_data))
+tweets= pd.DataFrame([tweets_text]).T
+print (tweets)

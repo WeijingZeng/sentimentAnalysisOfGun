@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import re
 from textblob import TextBlob
 
-tweets_data_path = './test-gun.txt'
+tweets_data_path = './twitter_data.txt'
 tweets_file = open(tweets_data_path, "r")
 
 
@@ -45,4 +45,7 @@ for indexs in tweets.index:
         percent[1] +=1
     else:
         percent[2] +=1
-print (percent)
+
+plt.pie(percent,explode = (0.05,0,0), labels = ["positive", "neutral", "negative"], autopct = '%3.1f%%', pctdistance = 0.6)
+plt.title("Percentage of Sentiment")  
+plt.show()    
